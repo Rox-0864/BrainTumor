@@ -4,6 +4,7 @@ __pycache__/
 *.pyc
 
 # Dataset y archivos grandes
+dataset/
 data/
 *.zip
 *.tar.gz
