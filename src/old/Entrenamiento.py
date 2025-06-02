@@ -1,3 +1,5 @@
+from keras.applications.resnet50 import ResNet50
+
 # %% Construcción del modelo ResNet50
 def build_resnet_model(input_shape=(224, 224, 3)):
     # Cargar ResNet50 preentrenada (sin las capas superiores de clasificación de ImageNet)
