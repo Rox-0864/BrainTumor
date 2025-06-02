@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import matplotlib.pyplot as plt
 
-class TrainingHistoryPlotter:
+class TrainingPlotter:
     """
     Class for plotting training history for both phases.
     """
