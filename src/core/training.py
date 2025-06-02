@@ -34,9 +34,6 @@ class ModelTrainer:
             input_shape=self.input_shape
         )
         
-        ### yo sacaria de aqui la parte de trainable y la pondria en training ???????
-        ### no es necesario que el modelo base sea trainable en este momento ????
-
         # Freeze base model layers initially
         base_model.trainable = False # weights will not be updated during initial training
 
@@ -44,15 +41,6 @@ class ModelTrainer:
         base_model.summary()
         print("\nBase model (ResNet50) loaded and trainable False. Summary:")
 
-        # Freeze the base model layers ##### ???? ADDED by JRE
-        for layer in base_model.layers:
-            layer.trainable = False
-        
-        # Print summary of the base model
-        base_model.summary()
-        print("\nBase model (ResNet50) loaded and frozen. Summary:")
-
-        
         # Build complete model with custom top layers
         inputs = layers.Input(shape=self.input_shape)
         x = base_model(inputs, training=False)  # training=False ????
