@@ -3,7 +3,7 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # 0 = all logs, 1 = info, 2 = warnings, 3 = errors
 
 # Optional: Disable GPU completely if it's causing runtime errors
-os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+#os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 import tensorflow as tf
 import keras
@@ -13,6 +13,8 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from imblearn.over_sampling import RandomOverSampler
 from keras.applications.resnet50 import preprocess_input
+
+keras.utils.image_dataset_from_directory
 
 class DataPreprocessor:
     """

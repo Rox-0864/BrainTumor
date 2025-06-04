@@ -1,5 +1,5 @@
 from src.core.load_data import LoadData
-from src.core.data_preprocess import DataPreprocessor
+from src.core.preprocess import DataPreprocessor
 from src.core.training import ModelTrainer
 from pathlib import Path
 import os
@@ -27,13 +27,13 @@ def main():
         
         # Step 2: Preprocess data
         print("\n2. Preprocessing data...")
-        preprocessor = DataPreprocessor(img_size=(224, 224), batch_size=32)
-        train_gen, valid_gen, test_gen, label_encoder = preprocessor.process_data(data_df)
+        preprocessor = DataPreprocessor(img_size=(224, 224), batch_size=12)
+        train_ds, valid_ds, test_ds, label_encoder = preprocessor.process_data(data_df)
         
-        print(f"Training batches: {len(train_gen)}")
-        print(f"Validation batches: {len(valid_gen)}")
-        print(f"Test batches: {len(test_gen)}")
-        print(f"Label encoding: {dict(zip(label_encoder.classes_, label_encoder.transform(label_encoder.classes_)))}")
+        print(f"Training batches: {len(train_ds)}")
+        print(f"Validation batches: {len(valid_ds)}")
+        print(f"Test batches: {len(test_ds)}")
+        print(f"Label encoding: {dict(enumerate(label_encoder.classes_))}")
         
         # Step 3: Build and train model
         print("\n3. Building and training model...")
@@ -50,8 +50,8 @@ def main():
         # Train model (complete pipeline)
         print("\nStarting training...")
         history1, history2 = trainer.train_complete(
-            train_gen=train_gen,
-            valid_gen=valid_gen,
+            train_ds=train_ds,
+            valid_ds=valid_ds,
             initial_epochs=10,
             fine_tune_epochs=10,
             model_save_path='models/best_brain_tumor_model.h5'
@@ -65,7 +65,7 @@ def main():
         
         # Step 5: Evaluate on test set (optional)
         print("\n5. Evaluating on test set...")
-        test_results = trainer.model.evaluate(test_gen, verbose=1)
+        test_results = trainer.model.evaluate(test_ds, verbose=1)
         print(f"Test Loss: {test_results[0]:.4f}")
         print(f"Test Accuracy: {test_results[1]:.4f}")
         print(f"Test AUC: {test_results[2]:.4f}")
