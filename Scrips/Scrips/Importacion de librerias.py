@@ -118,6 +118,3 @@ train_datagen = ImageDataGenerator(
     fill_mode='nearest'
 )
 
-import tensorflow as tf
-
-print("Num GPUs Available:", len(tf.config.list_physical_devices('GPU')))
