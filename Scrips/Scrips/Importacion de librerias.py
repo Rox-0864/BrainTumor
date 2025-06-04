@@ -65,7 +65,7 @@ label_encoder = LabelEncoder()
 df['category_encoded'] = label_encoder.fit_transform(df['label'])
 
 print("DataFrame después de la codificación de etiquetas:")
-print(df.head())
+df.sample(10)
 print(f"Clases codificadas: {label_encoder.classes_} -> {label_encoder.transform(label_encoder.classes_)}")
 
 # Primero, dividir en entrenamiento (80%) y un conjunto temporal (20% para validación + prueba)
