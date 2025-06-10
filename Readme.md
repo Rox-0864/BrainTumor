@@ -9,7 +9,7 @@ Si encuentran problemas con la descarga, pueden buscar las imagenes en mi Drive:
 https://drive.google.com/drive/folders/1eygT604e48FLQJbU-l2nujjBblmhAoja
 
 Pueden visualizar como funciona nuestro clasificador en la siguiente página de Streamlit:<br>
-https://braintumordetection-xperience.streamlit.app/
+https://braintumordetection-1.streamlit.app/
 
 ## 🚀 Instrucciones para el equipo
 
